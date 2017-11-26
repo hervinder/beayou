@@ -9,7 +9,7 @@ import { newUser } from '../signup';
   styleUrls: ['./app-signup.component.css']
 })
 export class AppSignupComponent implements OnInit {
-    
+    title='Hello';
 
   constructor(
     private signupService: RootService,
