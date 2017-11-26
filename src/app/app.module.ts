@@ -10,13 +10,15 @@ import { APP_ROUTES_PROVIDERS } from './app.route';
 import { RootService } from './app.service';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
+import { SignupTalentComponent } from './signup/signup-talent/signup-talent.component';
 @NgModule({
   declarations: [
     AppComponent,
     YooHeaderComponent,
     AppSignupComponent,
     HomeComponent,
-    SigninComponent
+    SigninComponent,
+    SignupTalentComponent
   ],
   imports: [
     BrowserModule,

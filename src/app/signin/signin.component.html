@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12" style="">
 
-            <form (submit)="addUser()">
+            <form (submit)="auth_user()">
                 <div class="col-md-4">
 
                 </div>
@@ -15,11 +15,11 @@
                             </div>
                             <div class="login_userid">
                                 <label for="InputFirstName">Email Address</label>
-                                <input type="text" class="form-control" id="InputLoginEmail" name="loginEmail" placeholder="Email Address">
+                                <input type="text" class="form-control" [(ngModel)]="model.user_email" id="InputLoginEmail" name="loginEmail" placeholder="Email Address">
                             </div>
                             <div class="login_password">
                                 <label for="InputFirstName">Password</label>
-                                <input type="password" class="form-control" id="InputLoginPassword" name="loginPassword" placeholder="Password">
+                                <input type="password" class="form-control" [(ngModel)]="model.user_password" id="InputLoginPassword" name="loginPassword" placeholder="Password">
                             </div>
                             <div class="login_checkbox">
                                 <span>
