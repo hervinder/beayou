@@ -16,4 +16,8 @@ export class RootService{
        return this._http.post("http://ileadcorporation.com/beayou_test/login.php",info)
           .map((response) => response.json());
    }
+   addTalentDetails(info){
+    return this._http.post("http://ileadcorporation.com/beayou_test/script.php",info)
+    .map((response) => response.json());
+   }
 }
