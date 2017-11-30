@@ -23,7 +23,7 @@
                             <!--<small id="emailHelp" class="form-text text-muted">We use this to match you with relevant auditions & jobs.</small>-->
 
                             <div class="col-md-4" *ngFor="let item of data" style="padding: 15px;">
-                                <input type="checkbox" value="">
+                                <input type="checkbox" [value]="item.code" (change)="updateCheckedOptions(item.code,$event)">
                                 <label>{{item.name}}</label>
 
 

@@ -8,6 +8,7 @@ export class newUser_Talent {
     firstName: string ='';
     lastName: string ='';
     email: string='';
+    interest: string='';
     password: string='';
     gender:string='';
     date:string='';

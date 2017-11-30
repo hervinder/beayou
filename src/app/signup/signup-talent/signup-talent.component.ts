@@ -8,7 +8,9 @@ import { newUser_Talent } from "../signup-talent";
   styleUrls: ['./signup-talent.component.css']
 })
 export class SignupTalentComponent implements OnInit {
-
+  title = 'app';
+  private _checkedInterest: string ='';
+  optionsChecked= [];
 
   model = new newUser_Talent();
 
@@ -21,35 +23,79 @@ export class SignupTalentComponent implements OnInit {
 
   addTalent() {
     console.log(this.model);
+    this.updateOptions();
     this.signupService.addTalentDetails(this.model)
       .subscribe((res) => console.log(res));
   }
 
+  updateCheckedOptions(option, event){
+    console.log(option);
+    console.log(event);
+    this.optionMap[option] = event.target.checked;
+    console.log(this.optionMap);
+  }
+  optionMap= {
+    acting:false,
+    extras: false,
+    modeling:false,
+    musician: false,
+    photography: false,
+    tv_reality: false,
+    dancing:false,
+    film_stage_crew:false,
+    stylist:false,
+    magazine:false,
+    general_jobs:false
 
-  title = 'app';
 
+  };
+  updateOptions() {
+    for(var x in this.optionMap) {
+        if(this.optionMap[x]) {
+          
+            this._checkedInterest = this._checkedInterest + x +'~'
+
+        }
+    }
+    this._checkedInterest = this._checkedInterest.substring(0,this._checkedInterest.length -1);
+     this.model['interest']= this._checkedInterest;
+     this._checkedInterest='';
+    console.log(this.model);
+   
+}
   data = [{
-    "name": "Acting"
+    "name": "Acting",
+    "code":"acting"
   }, {
-    "name": "Extras"
+    "name": "Extras",
+    "code":"extras"
   }, {
-    "name": "Modeling"
+    "name": "Modeling",
+    "code":"modeling"
   }, {
-    "name": "Musician"
+    "name": "Musician",
+    "code":"musician"
   }, {
-    "name": "Photography"
+    "name": "Photography",
+    "code": 'photography'
   }, {
-    "name": "TV & Reality"
+    "name": "TV & Reality",
+    "code":"tv_reality"
   }, {
-    "name": "Dancing"
+    "name": "Dancing",
+    "code":"dancing"
   }, {
-    "name": "Film & Stage Crew"
+    "name": "Film & Stage Crew",
+    "code":"film_stage_crew"
   }, {
-    "name": "Stylist"
+    "name": "Stylist",
+    "code":"stylist"
   }, {
-    "name": "Magazine"
+    "name": "Magazine",
+    "code": "magazine"
   }, {
-    "name": "General Jobs"
+    "name": "General Jobs",
+    "code":"general_jobs"
   }];
 
   month = [{
