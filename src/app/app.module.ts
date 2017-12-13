@@ -11,6 +11,8 @@ import { RootService } from './app.service';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupTalentComponent } from './signup/signup-talent/signup-talent.component';
+import { MemberComponent } from './shared/member/member.component';
+import { TrainingComponent } from './signup/training/training.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { SignupTalentComponent } from './signup/signup-talent/signup-talent.comp
     AppSignupComponent,
     HomeComponent,
     SigninComponent,
-    SignupTalentComponent
+    SignupTalentComponent,
+    MemberComponent,
+    TrainingComponent
   ],
   imports: [
     BrowserModule,
