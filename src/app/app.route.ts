@@ -5,6 +5,8 @@ import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
 import { MemberComponent  } from './shared/member/member.component';
 import {TrainingComponent} from './signup/training/training.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {ProfileComponent} from './dashboard/profile/profile.component'
 
 const App_Routes: Routes=[
   
@@ -13,7 +15,9 @@ const App_Routes: Routes=[
     {path:'signup/company', component:AppSignupComponent},
     {path:'signup/talent', component:SignupTalentComponent},
     {path:'signup/training', component:TrainingComponent},
-    {path:'signin', component:SigninComponent}
+    {path:'signin', component:SigninComponent},
+    {path:'dashboard',component: DashboardComponent},
+    {path:'dashboard/profile', component:ProfileComponent}
     
 ];
 

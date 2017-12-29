@@ -18,7 +18,7 @@ export class TrainingComponent implements OnInit {
   model = new newTrainee();
   addTrainee() {    
     console.log(this.model);
-    // this.signupService.addTraineeDetails(this.model)
-    //   .subscribe((res) => console.log(res));
+     this.signupService.addTraineeDetails(this.model)
+       .subscribe((res) => console.log(res));
   }
 }

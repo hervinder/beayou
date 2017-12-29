@@ -8,21 +8,35 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-   private model={
-     user_email:'',
-     user_password:''
-   }
-  constructor(private signinService:RootService) {
-     
-   }
+  private model = {
+    user_email: '',
+    user_password: '',
+    member: ''
+  };
+  error_msg='';
+  error_flag=false;
+  constructor(private signinService: RootService, private router: Router) {
+
+  }
 
   ngOnInit() {
   }
-auth_user(){
+  auth_user() {
 
-console.log(this.model);
-  this.signinService.login_auth(this.model)
-      .subscribe((res) => console.log(res));
+    console.log(this.model);
 
-}
+    this.signinService.login_auth(this.model)
+      .subscribe((res) =>{
+       if(res['isError'] === 'Y'){
+           this.error_flag = true;
+           this.error_msg= res['error'];
+       }
+       else{
+        this.router.navigate(["./dashboard"])
+        console.log(res);
+       }
+      
+      });
+
+  }
 }

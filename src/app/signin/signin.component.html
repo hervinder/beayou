@@ -1,3 +1,4 @@
+<app-yoo-header></app-yoo-header>
 <div class="container">
     <div class="row">
         <div class="col-md-12" style="">
@@ -12,6 +13,18 @@
                         <div class="login_inner">
                             <div class="login_title">
                                 <label for="">Login</label>
+                            </div>
+
+                            <div class="sign_member">
+                                <div>
+                                    <label for="">SignIn As</label>
+                                </div>
+                                <div class="">
+                                    <span class="radio-inline"><label style="color: #737373;"><input type="radio" [(ngModel)]="model.member" value="company" name="optradio">Company</label></span>
+                                    <span class="radio-inline"><label style="color: #737373;"><input type="radio" [(ngModel)]="model.member" value="talent" name="optradio">Talent</label></span>
+                                    <span class="radio-inline"><label style="color: #737373;"><input type="radio" [(ngModel)]="model.member" value="training" name="optradio">Training Center</label></span>
+                                </div>
+
                             </div>
                             <div class="login_userid">
                                 <label for="InputFirstName">Email Address</label>
@@ -29,6 +42,9 @@
                                 <span style="float: right;">
                                 <a href="" >Forgot Password</a>
                               </span>
+                            </div>
+                            <div class="error" *ngIf='error_flag'>
+                                <span for="">{{error_msg}}</span>
                             </div>
                             <div class="login_submit">
                                 <button type="submit" class="btn btn-primary register_btn">Submit</button>

@@ -69,3 +69,13 @@
     line-height: 1em;
     padding-left: 12px;
 }
+
+.sign_member {
+    padding: 10px;
+    padding-top: 30px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
