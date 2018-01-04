@@ -18,6 +18,9 @@ import { HeaderComponent } from './dashboard/header/header.component';
 import { DropdownDirective } from './dropdown.directive';
 import { MainPageComponent } from './shared/main-page/main-page.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
+import { ListTrainingComponent } from './dashboard/list-training/list-training.component';
+import { Step1Component } from './dashboard/list-training/step1/step1.component';
+import { Step2Component } from './dashboard/list-training/step2/step2.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
     HeaderComponent,
     DropdownDirective,
     MainPageComponent,
-    ProfileComponent
+    ProfileComponent,
+    ListTrainingComponent,
+    Step1Component,
+    Step2Component
   ],
   imports: [
     BrowserModule,

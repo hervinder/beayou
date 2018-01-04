@@ -2,14 +2,14 @@
 
     <div class="col-md-12 hidden-sm hidden-xs header_top">
         <div class="">
-            <span class="" [routerLink]="['../']" style="  color: #90d600; font-size: 21px;font-weight: initial;">Beayou.in</span>
+            <span class="" [routerLink]="['/dashboard']" style="  color: #90d600; font-size: 21px;font-weight: initial;">Beayou.in</span>
             <span style="    padding-left: 10%;"> 
                   <span class=" header-content" style="    padding-right: 5%;">Auditions & Jobs </span>
             <span class="header-content" style="    padding-right: 5%;">Talent Directory</span>
             <span class=" header-content">Discover</span>
             </span>
             <span style="    float: right;  ">
-              <span style="    margin-right: 30px;"><button type="button" class="btn btn-default">List a Training</button></span>
+              <span style="    margin-right: 30px;"><button type="button" [routerLink]="['/dashboard/listTraining']" class="btn btn-default">List a Training</button></span>
             <ul class="dropdown nav navbar-nav navbar-right">
                 <li class="dropdown" rbDropdown>
                     <a class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Hervinder<span class="caret"></span></a>
@@ -18,7 +18,7 @@
                         <li><a (click)="onRetrieve()">Notification</a></li>
                         <li><a (click)="onRetrieve()">My Listing</a></li>
                         <li><a (click)="onRetrieve()">Setting</a></li>
-                        <li><a (click)="onRetrieve()">Sign out</a></li>
+                        <li><a (click)="onSignout()">Sign out</a></li>
                     </ul>
                 </li>
             </ul>

@@ -6,7 +6,9 @@ import { HomeComponent } from './home/home.component';
 import { MemberComponent  } from './shared/member/member.component';
 import {TrainingComponent} from './signup/training/training.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {ProfileComponent} from './dashboard/profile/profile.component'
+import {ProfileComponent} from './dashboard/profile/profile.component';
+import {ListTrainingComponent} from './dashboard/list-training/list-training.component';
+import { Dashbaord_ROUTE } from './dashboard/dashboard.route';
 
 const App_Routes: Routes=[
   
@@ -16,8 +18,11 @@ const App_Routes: Routes=[
     {path:'signup/talent', component:SignupTalentComponent},
     {path:'signup/training', component:TrainingComponent},
     {path:'signin', component:SigninComponent},
-    {path:'dashboard',component: DashboardComponent},
-    {path:'dashboard/profile', component:ProfileComponent}
+    {path: 'dashboardHome', redirectTo: '/dashboard', pathMatch: 'full' },
+    {path:'dashboard',component: DashboardComponent,children:Dashbaord_ROUTE},
+    // {path:'dashboard/profile', component:ProfileComponent},
+    // {path:'dashboard/listTraining', component:ListTrainingComponent},
+    // {path:'dashboard/profile/listTraining', component:ListTrainingComponent}
     
 ];
 
