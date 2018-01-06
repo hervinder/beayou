@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NgProgressModule } from 'ngx-progressbar';
 import { AppComponent } from './app.component';
 import { YooHeaderComponent } from './yoo-header/yoo-header.component';
 import { AppSignupComponent } from './signup/app-signup.component';
@@ -21,6 +21,7 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ListTrainingComponent } from './dashboard/list-training/list-training.component';
 import { Step1Component } from './dashboard/list-training/step1/step1.component';
 import { Step2Component } from './dashboard/list-training/step2/step2.component';
+
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { Step2Component } from './dashboard/list-training/step2/step2.component'
     FormsModule,
     HttpModule,
     APP_ROUTES_PROVIDERS,
-    AngularFontAwesomeModule
+    NgProgressModule
+   
   ],
   providers: [RootService],
   bootstrap: [AppComponent]
