@@ -79,3 +79,8 @@
     color: red;
     text-align: center;
 }
+
+.error_color {
+    color: red;
+    font-size: 11px;
+}

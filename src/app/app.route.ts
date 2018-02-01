@@ -9,6 +9,8 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {ProfileComponent} from './dashboard/profile/profile.component';
 import {ListTrainingComponent} from './dashboard/list-training/list-training.component';
 import { Dashbaord_ROUTE } from './dashboard/dashboard.route';
+import { CanActivate } from '@angular/router';
+import {AuthGuard} from './app.auth.guards'
 
 const App_Routes: Routes=[
   
@@ -19,7 +21,7 @@ const App_Routes: Routes=[
     {path:'signup/training', component:TrainingComponent},
     {path:'signin', component:SigninComponent},
     {path: 'dashboardHome', redirectTo: '/dashboard', pathMatch: 'full' },
-    {path:'dashboard',component: DashboardComponent,children:Dashbaord_ROUTE},
+    {path:'dashboard',component: DashboardComponent,children:Dashbaord_ROUTE, canActivate:[AuthGuard]},
     // {path:'dashboard/profile', component:ProfileComponent},
     // {path:'dashboard/listTraining', component:ListTrainingComponent},
     // {path:'dashboard/profile/listTraining', component:ListTrainingComponent}

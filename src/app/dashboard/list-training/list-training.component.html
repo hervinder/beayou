@@ -1,2 +1,67 @@
-<router-outlet>
-</router-outlet>
+<!-- <router-outlet>
+</router-outlet> -->
+<div class="list_header col-md-12">
+    <div>
+        <span class="" style="  color: #90d600; font-size: 21px;font-weight: initial;">Beayou.in</span>
+    </div>
+</div>
+<div class="col-md-8 col-md-offset-2">
+    <mat-horizontal-stepper [linear]="isLinear">
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup" style="text-align:center;">
+                <ng-template matStepLabel>Fill out your name</ng-template>
+                <div class="col-md-12 ">
+                    <div class="col-md-12 text-center" style="padding-bottom:8%;">
+                        <h1 class="txt-center list_job">List an Training - free</h1>
+                        <p class="txt-center mb3">It's free to list your training or job. We're not an agency and we don't charge a commission.</p>
+                    </div>
+                    <div class="">
+
+                        <mat-form-field class="form-filed">
+                            <mat-select placeholder="Choose a category..." formControlName="categoryCtrl" name="food">
+
+                                <mat-option *ngFor="let food of foods" [value]="food.value">
+                                    {{food.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="">
+
+                        <mat-form-field class="form-filed">
+                            <mat-select placeholder="Choose a subcategory..." formControlName="subcategoryCtrl" name="food">
+
+                                <mat-option *ngFor="let food of foods" [value]="food.value">
+                                    {{food.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Fill out your address</ng-template>
+                <mat-form-field>
+                    <input matInput placeholder="Address" formControlName="secondCtrl" required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            You are now done.
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

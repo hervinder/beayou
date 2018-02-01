@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 
 export class RootService{
 
+    public token;
    constructor(private _http:Http){}
 
    addSingupDetails(info){
@@ -15,7 +16,11 @@ export class RootService{
    login_auth(info){
        if(info['member'] === 'company'){
         return this._http.post("http://ileadcorporation.com/beayou_test/signin/signin_company.php",info)
-        .map((response) => response.json());
+        .map((response) => {
+          let res=  response.json();
+          console.log(res);     
+        
+        });
        }
        else if(info['member'] === 'talent'){
         return this._http.post("http://ileadcorporation.com/beayou_test/signin/signin_talent.php",info)
@@ -23,7 +28,19 @@ export class RootService{
        }
        else if(info['member'] === 'training'){
         return this._http.post("http://ileadcorporation.com/beayou_test/signin/signin_training.php",info)
-        .map((response) => response.json());
+        .map((response) => {
+            let res=  response.json();
+            let username = info['user_email'];
+            if(res['error_code'] === '1'){
+                  this.token = res["data"]["token"];
+                 localStorage.setItem('currentUser', JSON.stringify({ username: username, token: this.token }));
+                 return res['error_code'];
+            }   
+            else{
+                return res['error_code'];
+            }  
+          
+          });
        }
       else{
 
