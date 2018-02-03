@@ -61,7 +61,7 @@ export class dashbaordService{
             .map((response)=> 
             {
                 let response_message = response.json()
-                if(this.users['isError'] === 'N'){
+                if(response_message['isError'] === 'N'){
                   return response_message;
                  }
                  else{
@@ -89,7 +89,7 @@ export class dashbaordService{
             .map((response)=> 
             {
                 let response_message = response.json()
-                if(this.users['isError'] === 'N'){
+                if(response_message['isError'] === 'N'){
                   return response_message;
                  }
                  else{
@@ -117,7 +117,7 @@ export class dashbaordService{
             .map((response)=> 
             {
                 let response_message = response.json()
-                if(this.users['isError'] === 'N'){
+                if(response_message['isError'] === 'N'){
                   return response_message;
                  }
                  else{

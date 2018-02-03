@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
-import {dashbaordService} from '../../dashboard.service'
+import {dashbaordService} from '../../dashboard.service';
+import { MatSnackBar } from '@angular/material';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-edit-profileimage',
   templateUrl: './edit-profileimage.component.html',
@@ -18,7 +20,7 @@ export class EditProfileimageComponent {
 
   @ViewChild('cropper', undefined) cropper: ImageCropperComponent;
   file: any;
-  constructor(private elem: ElementRef, private _service:dashbaordService) {
+  constructor(private elem: ElementRef, private _service:dashbaordService,private snackBar: MatSnackBar, private _location: Location) {
     // super();
 
     this.cropperSettings1 = new CropperSettings();
@@ -45,6 +47,19 @@ export class EditProfileimageComponent {
   filesave(event) {
     console.log(this.data1);
     this._service.updateImage({'user_image':this.data1.image}).subscribe(users=>{
+      console.log(users);
+      if(users.isError === 'N'){
+        this._location.back();
+      this.snackBar.open('Profile Updated Succesfully', '', {
+        duration: 5000,
+      });
+      }
+      else{
+        this._location.back();
+        this.snackBar.open('Server Error, Please try again', '', {
+          duration: 5000,
+        });
+      }
       console.log(users);
     })
     localStorage.setItem('image', JSON.stringify(this.data1));
