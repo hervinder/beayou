@@ -32,6 +32,8 @@ import { EditNameComponent } from './dashboard/profile/edit-name/edit-name.compo
 import { EditMobileComponent } from './dashboard/profile/edit-mobile/edit-mobile.component';
 import { EditProfileimageComponent } from './dashboard/profile/edit-profileimage/edit-profileimage.component';
 import {ImageCropperComponent, CropperSettings} from 'ng2-img-cropper';
+import { PhotoUploadComponent } from './dashboard/profile/photo-upload/photo-upload.component';
+import { FetchImagesComponent } from './dashboard/profile/fetch-images/fetch-images.component';
 
 
 
@@ -56,7 +58,9 @@ import {ImageCropperComponent, CropperSettings} from 'ng2-img-cropper';
     EditNameComponent,
     EditMobileComponent,
     ImageCropperComponent,
-    EditProfileimageComponent
+    EditProfileimageComponent,
+    PhotoUploadComponent,
+    FetchImagesComponent
   ],
   imports: [
     BrowserModule,
