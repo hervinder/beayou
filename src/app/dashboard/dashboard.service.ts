@@ -52,7 +52,7 @@ export class dashbaordService{
         getUserDetail(): Observable<any>{
            return this.users;
         }
-
+      
         updateMobile(info){
             let token = JSON.parse(localStorage.getItem("currentUser"));
             let headers = new Headers({ 'Authorization': 'Bearer ' + token['token']}) ;
@@ -137,4 +137,28 @@ export class dashbaordService{
          
          });
         }
+        fetchImages(){
+            return this.http 
+            .get(
+           //  "http://128.136.227.187:81/script_new.php",  //sit
+           "http://localhost/fetchImage.php")
+            .map((response: Response) =>response.json())
+        }
+        UploadData(file) {
+            //   let formData = new FormData();
+              
+            //  formData.append("file_upload",file);
+            //  console.log(formData);
+        
+          //pass the key name by which we will recive the file
+          
+        
+              return this.http 
+                .post(
+                 "http://ileadcorporation.com/beayou_test/dashboard/upload/upload.php",  //sit
+              // "http://localhost/script_new.php",  //uat
+                  file)
+                .map((response: Response) =>response.json())
+              //  .post("http://localhost/script.php", file)
+            }
 }

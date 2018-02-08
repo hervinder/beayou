@@ -32,7 +32,8 @@
                 </div>
                 <div>
                     <span> <i>You haven't added any videos yet</i></span>
-                    <span style="float:right;"> <a class="btn btn-default btn-sm" href="#">
+                    <span style="float:right;" [routerLink]="['/dashboard/profile/upload-photo']"> 
+                        <a class="btn btn-default btn-sm" >
                         <i class="fa fa-upload" aria-hidden="true"></i> Upload</a>
                      </span>
                 </div>
@@ -44,6 +45,12 @@
                 <div>
                     <span> <i>You haven't added any videos yet</i></span>
                     <span style="float:right;"> <a class="btn btn-default btn-sm" href="#">
+                        <i class="fa fa-upload" aria-hidden="true"></i> Upload</a>
+                     </span>
+                </div>
+                <div>
+                    <span style="float:right;" [routerLink]="['/dashboard/profile/fetch-photo']"> 
+                        <a class="btn btn-default btn-sm" >
                         <i class="fa fa-upload" aria-hidden="true"></i> Upload</a>
                      </span>
                 </div>
