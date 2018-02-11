@@ -138,27 +138,42 @@ export class dashbaordService{
          });
         }
         fetchImages(){
+            
+            
+            
             return this.http 
             .get(
            //  "http://128.136.227.187:81/script_new.php",  //sit
-           "http://localhost/fetchImage.php")
+           "http://ileadcorporation.com/beayou_test/fetch_image.php")
             .map((response: Response) =>response.json())
         }
         UploadData(file) {
-            //   let formData = new FormData();
-              
-            //  formData.append("file_upload",file);
-            //  console.log(formData);
-        
-          //pass the key name by which we will recive the file
-          
-        
-              return this.http 
-                .post(
-                 "http://ileadcorporation.com/beayou_test/dashboard/upload/upload.php",  //sit
-              // "http://localhost/script_new.php",  //uat
-                  file)
-                .map((response: Response) =>response.json())
+           
+          let token = JSON.parse(localStorage.getItem("currentUser"));
+          let headers = new Headers({ 'Authorization': 'Bearer ' + token['token']}) ;
+          let options = new RequestOptions({headers:headers});
+          return this.http.post('http://ileadcorporation.com/beayou_test/dashboard/upload/upload.php',file,options)
+          .map((response)=> 
+          {
+              let response_message = response.json()
+              if(response_message['isError'] === 'N'){
+                return response_message;
+               }
+               else{
+                   let message= response_message['result'];
+                   this.snackBar.open(message, '', {
+                       duration: 2000,
+                     });
+                  
+               }
+       
+       });
+            //   return this.http 
+            //     .post(
+            //      "http://ileadcorporation.com/beayou_test/dashboard/upload/upload.php",  //sit
+            //   // "http://localhost/script_new.php",  //uat
+            //       file)
+            //     .map((response: Response) =>response.json())
               //  .post("http://localhost/script.php", file)
             }
 }

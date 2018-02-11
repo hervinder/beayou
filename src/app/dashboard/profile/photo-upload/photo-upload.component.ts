@@ -119,7 +119,7 @@ export class PhotoUploadComponent implements OnInit {
     this.isSubmited = false;
     this.uploading_file = true;
     this._service.UploadData(formData).subscribe(users=>{
-      if(users['isSuccess'] === "Y"){
+      if(users['result']['isSuccess'] === "Y"){
        alert('uploaded Successfully');
     //const fileName = '';
        
