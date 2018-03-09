@@ -41,7 +41,8 @@ export class SigninComponent implements OnInit {
   },
 
   ]
-  constructor(private signinService: RootService, private router: Router, public ngProgress: NgProgress, private formBuilder: FormBuilder) {
+  constructor(
+    private signinService: RootService, private router: Router, public ngProgress: NgProgress, private formBuilder: FormBuilder) {
     // this.myForm = formBuilder.group({
 
     //   'password': ['', Validators.required],

@@ -1,7 +1,8 @@
-import { Component, OnInit ,ElementRef} from '@angular/core';
-import {dashbaordService} from '../../dashboard.service';
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { dashbaordService } from '../../dashboard.service';
 import { MatSnackBar } from '@angular/material';
 import { Location } from '@angular/common';
+import { LoaderService } from '../../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-photo-upload',
@@ -9,7 +10,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./photo-upload.component.css']
 })
 export class PhotoUploadComponent implements OnInit {
-  fileDetails: string[] =[];
+  fileDetails: string[] = [];
   textSize;
   fileSize;
   imageSize;
@@ -32,7 +33,12 @@ export class PhotoUploadComponent implements OnInit {
   validateMsg_fileUpload: string;
   isSubmited = true;
   isError = false;
-  constructor( private elem: ElementRef,private _service:dashbaordService,private snackBar: MatSnackBar, private _location: Location) { }
+  constructor(
+    private elem: ElementRef,
+    private _service: dashbaordService,
+    private snackBar: MatSnackBar,
+    private _location: Location,
+    private loader: LoaderService) { }
 
   ngOnInit() {
   }
@@ -46,11 +52,11 @@ export class PhotoUploadComponent implements OnInit {
       alert("Enter a valid file");
     } else {
       let fileSizeMaz = event.srcElement.files[0].size;
-      
-     if(fileSizeMaz > 10485760 ){
-       alert("File size should be maximum 10 mb");
-       return;
-     }
+
+      if (fileSizeMaz > 10485760) {
+        alert("File size should be maximum 10 mb");
+        return;
+      }
       this.fileName = fileName;
       const size = event.srcElement.files[0].size;
       this.size = size.toFixed(2);
@@ -69,9 +75,9 @@ export class PhotoUploadComponent implements OnInit {
         this.unit = "GB";
       }
     }
-    
-   // event.target.value ="";
-    console.log("Filename:", this.size+''+this.unit);
+
+    // event.target.value ="";
+    console.log("Filename:", this.size + '' + this.unit);
   }
   getFileExt(fileName) {
     const lastindex = fileName.lastIndexOf(".");
@@ -81,7 +87,7 @@ export class PhotoUploadComponent implements OnInit {
   isFileValid(fileType, typeCheck) {
     let validFormats = [];
     if (typeCheck == "image") {
-      validFormats = ["jpg", "jpeg", "png","tif","gif","bmp"];
+      validFormats = ["jpg", "jpeg", "png", "tif", "gif", "bmp"];
     } else {
       validFormats = [
         "pdf",
@@ -109,23 +115,40 @@ export class PhotoUploadComponent implements OnInit {
     let files = this.elem.nativeElement.querySelector("#selectedFile").files;
     let formData = new FormData();
     let file = files[0];
-    let user_details= JSON.parse(localStorage.getItem('user_details'));
-    let userId= user_details['userId'];
+    let user_details = JSON.parse(localStorage.getItem('user_details'));
+    let userId = user_details['userId'];
     let userMember = user_details['member'];
     let unique_id = userMember + '_' + userId;
-    formData.append("member",userMember);
-    formData.append("user",unique_id);
+    formData.append("member", userMember);
+    formData.append("user", unique_id);
     formData.append("selectedFile", file, file.name);
     this.isSubmited = false;
     this.uploading_file = true;
-    this._service.UploadData(formData).subscribe(users=>{
+    this.loader.showLoader('')
+    this._service.UploadData(formData).subscribe(users => {
+      if (users['result']['isSuccess'] === "Y") {
+        // this.loader.hideLoader();
+        //  alert('uploaded Successfully');
+        this._service.optmizeImage(formData).subscribe(users => {
+          this.loader.hideLoader();
+          alert('uploaded Successfully');
+        })
+        //const fileName = '';
+
+      }
+      else {
+        alert('Problem uploading file, Please try again...');
+      }
       console.log(users);
     })
-   // this.isSubmitDisabled = true;
+    // this.isSubmitDisabled = true;
     // this.mLearningService.UploadData(formData).subscribe(
-       
+
     // );
 
     //this.uploadAction.emit(formData);
+  }
+  back() {
+    this._location.back();
   }
 }

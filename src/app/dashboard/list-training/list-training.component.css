@@ -48,7 +48,7 @@
 }
 
 .form-filed {
-    width: 50%;
+    width: 49%;
     padding: 15px 0px;
 }
 
@@ -57,6 +57,12 @@
         width: 100%;
         padding: 10px 0px;
     }
+}
+
+.register_btn {
+    background-color: #90d600;
+    border-color: #90d600;
+    font-size: 20px;
 }
 
 .outer_box {

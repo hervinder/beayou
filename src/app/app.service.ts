@@ -8,7 +8,7 @@ export class RootService{
 
     public token;
    constructor(private _http:Http){}
-
+   
    addSingupDetails(info){
           return this._http.post("http://ileadcorporation.com/beayou_test/signup/signup_company.php",info)
           .map((response) => response.json());

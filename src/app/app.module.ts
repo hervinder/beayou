@@ -6,6 +6,9 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogueModule } from './shared/dialogue/dialogue.module';
+/* Featured Module */
+import { LoaderComponent } from './shared/loader/loader.component';
+import { LoaderService } from './shared/loader/loader.service';
 import { NgProgressModule } from 'ngx-progressbar';
 import { AppComponent } from './app.component';
 import { YooHeaderComponent } from './yoo-header/yoo-header.component';
@@ -34,7 +37,10 @@ import { EditProfileimageComponent } from './dashboard/profile/edit-profileimage
 import {ImageCropperComponent, CropperSettings} from 'ng2-img-cropper';
 import { PhotoUploadComponent } from './dashboard/profile/photo-upload/photo-upload.component';
 import { FetchImagesComponent } from './dashboard/profile/fetch-images/fetch-images.component';
-
+import {indiaStateService} from './shared/india-state.module'
+import 'rxjs/add/operator/take';
+import { VideoComponent } from './dashboard/profile/video/video.component';
+import { FetchVideoComponent } from './dashboard/profile/fetch-video/fetch-video.component';
 
 
 @NgModule({
@@ -60,7 +66,10 @@ import { FetchImagesComponent } from './dashboard/profile/fetch-images/fetch-ima
     ImageCropperComponent,
     EditProfileimageComponent,
     PhotoUploadComponent,
-    FetchImagesComponent
+    FetchImagesComponent,
+    LoaderComponent,
+    VideoComponent,
+    FetchVideoComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +84,13 @@ import { FetchImagesComponent } from './dashboard/profile/fetch-images/fetch-ima
     DialogueModule
 
   ],
-  providers: [RootService, dashbaordService, AuthGuard],
+  providers: [
+    RootService,
+     dashbaordService, 
+     AuthGuard,
+     LoaderService,
+     indiaStateService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
