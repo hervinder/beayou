@@ -174,7 +174,7 @@ export class dashbaordService{
             return this.http 
             .post(
            //  "http://128.136.227.187:81/script_new.php",  //sit
-           "http://ileadcorporation.com/beayou_test/fetch_image.php",file,options)
+           "https://beayou.in/dashboard/fetch_image.php",file,options)
             .map((response: Response) =>response.json())
         }
 
