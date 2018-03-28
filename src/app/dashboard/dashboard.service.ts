@@ -5,7 +5,7 @@ import {RootService} from '../app.service'
 import {MatSnackBar} from '@angular/material';
 import {dialogueService} from '../shared/dialogue/dialogue.service'
 import { Observable } from 'rxjs';
-import { LoaderService } from '.././shared/loader/loader.service';
+
 
 
 @Injectable()
@@ -16,7 +16,7 @@ export class dashbaordService{
     users:any;
   constructor(private service:RootService,private http:Http,public snackBar: MatSnackBar,
                private dialogueservice: dialogueService,
-               private loader: LoaderService
+             
               ){}
         getUsers(){
             let token = JSON.parse(localStorage.getItem("currentUser"));
@@ -261,7 +261,7 @@ export class dashbaordService{
                return response_message;
                }
                else{
-                  this.loader.hideLoader();
+                  
                    let message= response_message['result'];
                    this.snackBar.open(message, '', {
                        duration: 2000,
