@@ -27,7 +27,7 @@ export class RootService{
         .map((response) => response.json());
        }
        else if(info['member'] === 'training'){
-        return this._http.post("http://ileadcorporation.com/beayou_test/signin/signin_training.php",info)
+        return this._http.post("https://beayou.in/signin/signin_training.php",info)
         .map((response) => {
             let res=  response.json();
             let username = info['user_email'];
