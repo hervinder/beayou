@@ -24,7 +24,7 @@ export class dashbaordService{
             //     Authorization: 'Bearer ' + this.service.token
             //               });
             
-            return this.http.get('http://ileadcorporation.com/beayou_test/dashboard/dashboard.php',options)
+            return this.http.get('https://beayou.in/dashboard/dashboard.php',options)
                .map((response)=> 
                {
                    this.users = response.json()
@@ -57,7 +57,7 @@ export class dashbaordService{
             let token = JSON.parse(localStorage.getItem("currentUser"));
             let headers = new Headers({ 'Authorization': 'Bearer ' + token['token']}) ;
             let options = new RequestOptions({headers:headers});
-            return this.http.post('http://ileadcorporation.com/beayou_test/dashboard/edit/edit_mobile.php',info,options)
+            return this.http.post('https://beayou.in/dashboard/edit/edit_mobile.php',info,options)
             .map((response)=> 
             {
                 let response_message = response.json()
@@ -85,7 +85,7 @@ export class dashbaordService{
             let token = JSON.parse(localStorage.getItem("currentUser"));
             let headers = new Headers({ 'Authorization': 'Bearer ' + token['token']}) ;
             let options = new RequestOptions({headers:headers});
-            return this.http.post('http://ileadcorporation.com/beayou_test/dashboard/upload/video_upload.php',info,options)
+            return this.http.post('https://beayou.in/dashboard/upload/video_upload.php',info,options)
             .map((response)=> 
             {
                 let response_message = response.json()
@@ -113,7 +113,7 @@ export class dashbaordService{
             let token = JSON.parse(localStorage.getItem("currentUser"));
             let headers = new Headers({ 'Authorization': 'Bearer ' + token['token']}) ;
             let options = new RequestOptions({headers:headers});
-            return this.http.post('http://ileadcorporation.com/beayou_test/dashboard/edit/edit_name.php',info,options)
+            return this.http.post('https://beayou.in/dashboard/edit/edit_name.php',info,options)
             .map((response)=> 
             {
                 let response_message = response.json()
@@ -141,7 +141,7 @@ export class dashbaordService{
             let token = JSON.parse(localStorage.getItem("currentUser"));
             let headers = new Headers({ 'Authorization': 'Bearer ' + token['token']}) ;
             let options = new RequestOptions({headers:headers});
-            return this.http.post('http://ileadcorporation.com/beayou_test/dashboard/edit/edit_image.php',info,options)
+            return this.http.post('https://beayou.in/dashboard/edit/edit_image.php',info,options)
             .map((response)=> 
             {
                 let response_message = response.json()
@@ -187,7 +187,7 @@ export class dashbaordService{
             return this.http 
             .post(
            //  "http://128.136.227.187:81/script_new.php",  //sit
-           "http://ileadcorporation.com/beayou_test/dashboard/upload/fetch-video.php",file,options)
+           "https://beayou.in/dashboard/upload/fetch-video.php",file,options)
             .map((response: Response) =>response.json())
         }
 
@@ -195,7 +195,7 @@ export class dashbaordService{
             let token = JSON.parse(localStorage.getItem("currentUser"));
             let headers = new Headers({ 'Authorization': 'Bearer ' + token['token']}) ;
             let options = new RequestOptions({headers:headers});
-            return this.http.post('http://ileadcorporation.com/beayou_test/dashboard/listing/training_listing.php',info,options)
+            return this.http.post('https://beayou.in/dashboard/listing/training_listing.php',info,options)
             .map((response)=> 
             {
                 let response_message = response.json()
@@ -224,7 +224,7 @@ export class dashbaordService{
             let token = JSON.parse(localStorage.getItem("currentUser"));
             let headers = new Headers({ 'Authorization': 'Bearer ' + token['token']}) ;
             let options = new RequestOptions({headers:headers});
-            return this.http.post('http://ileadcorporation.com/beayou_test/dashboard/upload/test.php',file,options)
+            return this.http.post('https://beayou.in/dashboard/upload/test.php',file,options)
             .map((response)=> 
             {
                 let response_message = response.json()
@@ -248,7 +248,7 @@ export class dashbaordService{
           let token = JSON.parse(localStorage.getItem("currentUser"));
           let headers = new Headers({ 'Authorization': 'Bearer ' + token['token']}) ;
           let options = new RequestOptions({headers:headers});
-          return this.http.post('http://ileadcorporation.com/beayou_test/dashboard/upload/upload.php',file,options)
+          return this.http.post('https://beayou.in/dashboard/upload/upload.php',file,options)
           .map((response)=> 
           {
               let response_message = response.json()
