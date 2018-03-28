@@ -257,7 +257,7 @@ export class dashbaordService{
                return response_message;
                }
                else{
-                   let message= response_message['result'];
+                   let message= response_message;
                    this.snackBar.open(message, '', {
                        duration: 2000,
                      });
