@@ -41,6 +41,9 @@ import {indiaStateService} from './shared/india-state.module'
 import 'rxjs/add/operator/take';
 import { VideoComponent } from './dashboard/profile/video/video.component';
 import { FetchVideoComponent } from './dashboard/profile/fetch-video/fetch-video.component';
+import { TrainingListingComponent } from './home/training-listing/training-listing.component';
+import { TrainingDetailsComponent } from './home/training-details/training-details.component';
+import { ApplyTrainingComponent } from './home/apply-training/apply-training.component';
 
 
 @NgModule({
@@ -69,7 +72,10 @@ import { FetchVideoComponent } from './dashboard/profile/fetch-video/fetch-video
     FetchImagesComponent,
     LoaderComponent,
     VideoComponent,
-    FetchVideoComponent
+    FetchVideoComponent,
+    TrainingListingComponent,
+    TrainingDetailsComponent,
+    ApplyTrainingComponent
   ],
   imports: [
     BrowserModule,

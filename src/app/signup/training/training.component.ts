@@ -64,6 +64,7 @@ export class TrainingComponent implements OnInit {
           });
         }
         else{
+          this.myForm.reset();
           this.dialogue.alertBox({
             title: 'Sucess',
             message: 'Account Create Successfully',

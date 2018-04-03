@@ -124,7 +124,7 @@ export class PhotoUploadComponent implements OnInit {
     formData.append("selectedFile", file, file.name);
     this.isSubmited = false;
     this.uploading_file = true;
-    this.loader.showLoader('')
+  
     this._service.UploadData(formData).subscribe(users => {
       if (users['result']['isSuccess'] === "Y") {
         // this.loader.hideLoader();

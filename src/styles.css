@@ -57,3 +57,9 @@ body {
 .error_color {
     color: red;
 }
+
+.register_btn {
+    background-color: #90d600;
+    border-color: #90d600;
+    font-size: 20px;
+}

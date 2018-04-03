@@ -10,7 +10,10 @@ import {ProfileComponent} from './dashboard/profile/profile.component';
 import {ListTrainingComponent} from './dashboard/list-training/list-training.component';
 import { Dashbaord_ROUTE } from './dashboard/dashboard.route';
 import { CanActivate } from '@angular/router';
-import {AuthGuard} from './app.auth.guards'
+import {AuthGuard} from './app.auth.guards';
+import { TrainingListingComponent } from "./home/training-listing/training-listing.component";
+import { TrainingDetailsComponent } from "./home/training-details/training-details.component";
+import {  ApplyTrainingComponent} from "./home/apply-training/apply-training.component";
 
 const App_Routes: Routes=[
   
@@ -20,6 +23,9 @@ const App_Routes: Routes=[
     {path:'signup/talent', component:SignupTalentComponent},
     {path:'signup/training', component:TrainingComponent},
     {path:'signin', component:SigninComponent},
+    {path:'listTraining', component:TrainingListingComponent},
+    {path:'listDetails/:id', component:TrainingDetailsComponent},
+    {path:'applyTraining', component:ApplyTrainingComponent},
     {path: 'dashboardHome', redirectTo: '/dashboard', pathMatch: 'full' },
     {path:'dashboard',component: DashboardComponent,children:Dashbaord_ROUTE, canActivate:[AuthGuard]},
     // {path:'dashboard/profile', component:ProfileComponent},

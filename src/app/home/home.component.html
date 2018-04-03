@@ -17,32 +17,29 @@
                 </h3>
                 <div style="padding-top: 5%;">
                     <span class="audition_select ">
-                      <select>
-                          <option value="">All auditions & Jobs</option>
-                          <option value="">Acting Jobs</option>
-                          <option value="">Extra Jobs</option>
+                      <select  [(ngModel)]="categoryCtrl">
+                          <option value="all">All auditions & Jobs</option>
+                          <option *ngFor="let food of foods" [value]="food.value">{{food.viewValue}}</option>
+                         
                       </select>
                   </span>
                     <span class="audition_select ">
-                      <select>
-                     <option value="">Select State</option>
-                      <option>Haryana</option>
-                       <option>Delhi</option>
-                       <option>Punjab</option>
-                       <option>Himachal</option>
-                       <option>Jammu & Kashmir</option>
+                      <select  [(ngModel)]="stateCtrl">
+                     <option value="all">All States</option>
+                      <option  *ngFor="let state of states" [value]="state.code">{{state.name}}</option>
+                    
                       </select>
                   </span>
-                    <span class="audition_select ">
+                    <!-- <span class="audition_select ">
                       <select>
                      <option value="">Any Gender</option>
                       <option>Male</option>
                        <option>Female</option>
                       
                       </select>
-                  </span>
+                  </span> -->
                     <span>
-                          <button type="submit" class="btn btn-primary register_btn">Search</button>
+                          <button type="submit" (click)="submit()" class="btn btn-primary register_btn">Search</button>
                       </span>
                 </div>
                 <div class="home-hero__text">Looking for talent?

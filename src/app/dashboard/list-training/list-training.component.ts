@@ -19,16 +19,16 @@ export class ListTrainingComponent implements OnInit {
   secondFormGroup: FormGroup;
   states;
   foods = [
-    {value: 'steak-0', viewValue: 'Actors wanted'},
-    {value: 'pizza-1', viewValue: 'Extras wanted'},
-    {value: 'tacos-2', viewValue: 'Models wanted'},
-    {value: 'steak-0', viewValue: 'Musicians wanted'},
-    {value: 'pizza-1', viewValue: 'Photographers wanted'},
-    {value: 'tacos-2', viewValue: 'TV &amp; Reality'},
-    {value: 'steak-0', viewValue: 'Dancers wanted'},
-    {value: 'pizza-1', viewValue: 'Film &amp; Stage Crew wanted'},
-    {value: 'tacos-2', viewValue: 'Hair, Makeup &amp; Stylists wanted'},
-    {value: 'tacos-2', viewValue: 'Staff/Temps'}
+    {value: 'actor', viewValue: 'Actors wanted'},
+    {value: 'extras', viewValue: 'Extras wanted'},
+    {value: 'models', viewValue: 'Models wanted'},
+    {value: 'musician', viewValue: 'Musicians wanted'},
+    {value: 'photographers', viewValue: 'Photographers wanted'},
+    {value: 'tv&reality', viewValue: 'TV &amp; Reality'},
+    {value: 'dancers', viewValue: 'Dancers wanted'},
+    {value: 'film&staff', viewValue: 'Film &amp; Stage Crew wanted'},
+    {value: 'hair&makeup', viewValue: 'Hair, Makeup &amp; Stylists wanted'},
+  
   ];
   constructor(
     private dialogue: dialogueService,
