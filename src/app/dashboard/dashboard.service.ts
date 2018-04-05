@@ -253,7 +253,7 @@ export class dashbaordService {
         let token = JSON.parse(localStorage.getItem("currentUser"));
         let headers = new Headers({ 'Authorization': 'Bearer ' + token['token'] });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post('http://ileadcorporation.com/beayou_test/dashboard/upload/upload.php', file, options)
+        return this.http.post('https://beayou.in/dashboard/upload/upload.php', file, options)
             .map((response) => {
                 let response_message = response.json()
                 if (response_message['isError'] === 'N') {
