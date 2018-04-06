@@ -44,7 +44,7 @@ export class EditNameComponent implements OnInit {
     })
   }
   auth_user() {
-
+    this.apploader.showLoader("");
     this._service.updateName(this.myForm.value).subscribe(res => {
       // this._location.back();
       // this.snackBar.open('Updated Succesfully', '', {
@@ -65,9 +65,9 @@ export class EditNameComponent implements OnInit {
       }
       else {
         this.snackBar.open('Updated Succesfully', '', {
-            duration: 5000,
-          });
-           this._location.back();
+          duration: 5000,
+        });
+        this._location.back();
         // this.dialogue.alertBox({
         //   title: 'Success',
         //   message: "Updated Succesfully",

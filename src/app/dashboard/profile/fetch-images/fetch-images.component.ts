@@ -23,6 +23,7 @@ export class FetchImagesComponent implements OnInit {
     let userId= user_details['userId'];
     let userMember = user_details['member'];
     let unique_id = userMember + '_' + userId;
+    this.apploader.showLoader("");
     this._service.fetchImages(unique_id).subscribe(res=>{
    
       this.apploader.hideLoader();

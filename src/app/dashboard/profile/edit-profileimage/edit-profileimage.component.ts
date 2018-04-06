@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
-import {dashbaordService} from '../../dashboard.service';
+import { dashbaordService } from '../../dashboard.service';
 import { MatSnackBar } from '@angular/material';
 import { Location } from '@angular/common';
+import { LoaderService } from '../../../shared/loader/loader.service';
 @Component({
   selector: 'app-edit-profileimage',
   templateUrl: './edit-profileimage.component.html',
@@ -20,7 +21,11 @@ export class EditProfileimageComponent {
 
   @ViewChild('cropper', undefined) cropper: ImageCropperComponent;
   file: any;
-  constructor(private elem: ElementRef, private _service:dashbaordService,private snackBar: MatSnackBar, private _location: Location) {
+  constructor(private elem: ElementRef,
+    private _service: dashbaordService,
+    private snackBar: MatSnackBar,
+    private _location: Location,
+    private loader: LoaderService) {
     // super();
 
     this.cropperSettings1 = new CropperSettings();
@@ -46,15 +51,17 @@ export class EditProfileimageComponent {
   }
   filesave(event) {
     console.log(this.data1);
-    this._service.updateImage({'user_image':this.data1.image}).subscribe(users=>{
+    this.loader.showLoader("");
+    this._service.updateImage({ 'user_image': this.data1.image }).subscribe(users => {
       console.log(users);
-      if(users.isError === 'N'){
+      this.loader.hideLoader();
+      if (users.isError === 'N') {
         this._location.back();
-      this.snackBar.open('Profile Updated Succesfully', '', {
-        duration: 5000,
-      });
+        this.snackBar.open('Profile Updated Succesfully', '', {
+          duration: 5000,
+        });
       }
-      else{
+      else {
         this._location.back();
         this.snackBar.open('Server Error, Please try again', '', {
           duration: 5000,
