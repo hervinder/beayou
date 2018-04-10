@@ -34,7 +34,7 @@ export class RootService {
                 let username = info['user_email'];
                 if (res['error_code'] === '1') {
                     this.token = res["data"]["token"];
-                    localStorage.setItem('currentUser', JSON.stringify({ username: username, token: this.token }));
+                    localStorage.setItem('currentUser', JSON.stringify({ username: username, member_sign:'talent',token: this.token }));
                     return res['error_code'];
                 }
                 else {
@@ -50,7 +50,7 @@ export class RootService {
                     let username = info['user_email'];
                     if (res['error_code'] === '1') {
                         this.token = res["data"]["token"];
-                        localStorage.setItem('currentUser', JSON.stringify({ username: username, token: this.token }));
+                        localStorage.setItem('currentUser', JSON.stringify({ username: username, member_sign:'training',token: this.token }));
                         return res['error_code'];
                     }
                     else {
