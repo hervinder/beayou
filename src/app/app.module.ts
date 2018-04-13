@@ -44,6 +44,7 @@ import { FetchVideoComponent } from './dashboard/profile/fetch-video/fetch-video
 import { TrainingListingComponent } from './home/training-listing/training-listing.component';
 import { TrainingDetailsComponent } from './home/training-details/training-details.component';
 import { ApplyTrainingComponent } from './home/apply-training/apply-training.component';
+import { ListJobComponent } from './dashboard/list-job/list-job.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { ApplyTrainingComponent } from './home/apply-training/apply-training.com
     FetchVideoComponent,
     TrainingListingComponent,
     TrainingDetailsComponent,
-    ApplyTrainingComponent
+    ApplyTrainingComponent,
+    ListJobComponent
   ],
   imports: [
     BrowserModule,

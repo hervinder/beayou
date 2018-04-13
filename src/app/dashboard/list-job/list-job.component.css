@@ -1,0 +1,16 @@
+/deep/ .mat-form-field-label {
+    color: #90d600;
+}
+
+.form {
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.padd {
+    padding: 5px;
+}

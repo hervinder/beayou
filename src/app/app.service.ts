@@ -23,7 +23,15 @@ export class RootService {
             return this._http.post("https://beayou.in/signin/signin_company.php", info)
                 .map((response) => {
                     let res = response.json();
-                    console.log(res);
+                    let username = info['user_email'];
+                    if (res['error_code'] === '1') {
+                        this.token = res["data"]["token"];
+                        localStorage.setItem('currentUser', JSON.stringify({ username: username, member_sign:'company',token: this.token }));
+                        return res['error_code'];
+                    }
+                    else {
+                        return res['error_code'];
+                    }
 
                 });
         }

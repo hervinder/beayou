@@ -29,60 +29,82 @@ export class dashbaordService {
         //     Authorization: 'Bearer ' + this.service.token
         //               });
 
-        if(token['member_sign'] === 'talent'){
+        if (token['member_sign'] === 'talent') {
             return this.http.get('https://beayou.in/dashboard/dashboard_talent.php', options)
-            .map((response) => {
-                this.users = response.json()
-                if (this.users['isError'] === 'N') {
-                    return this.users;
-                }
-                else {
-                    this.loader.hideLoader();
-                    let message = this.users['result'];
-                    this.snackBar.open(message, '', {
-                        duration: 2000,
-                    });
-                    // this.dialogueservice.toastBox({
-                    //     title: 'Error',
-                    //     message: message,
-                    //     messageType: 'error',
-                    //     actionlabel: ['Close']
-                    //       }).take(1).subscribe((res)=>{
-                    //         console.log(res);
-                    //       })
-                }
+                .map((response) => {
+                    this.users = response.json()
+                    if (this.users['isError'] === 'N') {
+                        return this.users;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = this.users['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
-            });
+                });
         }
-        else if(token['member_sign'] === 'company'){
+        else if (token['member_sign'] === 'company') {
+            return this.http.get('https://beayou.in/dashboard/dashboard_company.php', options)
+                .map((response) => {
+                    this.users = response.json()
+                    if (this.users['isError'] === 'N') {
+                        return this.users;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = this.users['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
+                });
         }
-        else{
+        else {
             return this.http.get('https://beayou.in/dashboard/dashboard.php', options)
-            .map((response) => {
-                this.users = response.json()
-                if (this.users['isError'] === 'N') {
-                    return this.users;
-                }
-                else {
-                    this.loader.hideLoader();
-                    let message = this.users['result'];
-                    this.snackBar.open(message, '', {
-                        duration: 2000,
-                    });
-                    // this.dialogueservice.toastBox({
-                    //     title: 'Error',
-                    //     message: message,
-                    //     messageType: 'error',
-                    //     actionlabel: ['Close']
-                    //       }).take(1).subscribe((res)=>{
-                    //         console.log(res);
-                    //       })
-                }
+                .map((response) => {
+                    this.users = response.json()
+                    if (this.users['isError'] === 'N') {
+                        return this.users;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = this.users['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
-            });
+                });
         }
-      
+
     }
 
     getUserDetail(): Observable<any> {
@@ -93,206 +115,327 @@ export class dashbaordService {
         let token = JSON.parse(localStorage.getItem("currentUser"));
         let headers = new Headers({ 'Authorization': 'Bearer ' + token['token'] });
         let options = new RequestOptions({ headers: headers });
-        if(token['member_sign'] === 'talent'){
+        if (token['member_sign'] === 'talent') {
             return this.http.post('https://beayou.in/dashboard/edit/edit_mobile_talent.php', info, options)
-            .map((response) => {
-                let response_message = response.json()
-                if (response_message['isError'] === 'N') {
-                    return response_message;
-                }
-                else {
-                    this.loader.hideLoader();
-                    let message = response_message['result'];
-                    this.snackBar.open(message, '', {
-                        duration: 2000,
-                    });
-                    // this.dialogueservice.toastBox({
-                    //     title: 'Error',
-                    //     message: message,
-                    //     messageType: 'error',
-                    //     actionlabel: ['Close']
-                    //       }).take(1).subscribe((res)=>{
-                    //         console.log(res);
-                    //       })
-                }
+                .map((response) => {
+                    let response_message = response.json()
+                    if (response_message['isError'] === 'N') {
+                        return response_message;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = response_message['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
-            });
+                });
         }
-        else if(token['member_sign'] === 'company'){
+        else if (token['member_sign'] === 'company') {
+            return this.http.post('https://beayou.in/dashboard/edit/edit_mobile_company.php', info, options)
+                .map((response) => {
+                    let response_message = response.json()
+                    if (response_message['isError'] === 'N') {
+                        return response_message;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = response_message['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
+                });
         }
-        else{
+        else {
             return this.http.post('https://beayou.in/dashboard/edit/edit_mobile.php', info, options)
-            .map((response) => {
-                let response_message = response.json()
-                if (response_message['isError'] === 'N') {
-                    return response_message;
-                }
-                else {
-                    this.loader.hideLoader();
-                    let message = response_message['result'];
-                    this.snackBar.open(message, '', {
-                        duration: 2000,
-                    });
-                    // this.dialogueservice.toastBox({
-                    //     title: 'Error',
-                    //     message: message,
-                    //     messageType: 'error',
-                    //     actionlabel: ['Close']
-                    //       }).take(1).subscribe((res)=>{
-                    //         console.log(res);
-                    //       })
-                }
+                .map((response) => {
+                    let response_message = response.json()
+                    if (response_message['isError'] === 'N') {
+                        return response_message;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = response_message['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
-            });
+                });
         }
-      
+
     }
     uploadVideo(info) {
         let token = JSON.parse(localStorage.getItem("currentUser"));
         let headers = new Headers({ 'Authorization': 'Bearer ' + token['token'] });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post('https://beayou.in/dashboard/upload/video_upload.php', info, options)
-            .map((response) => {
-                let response_message = response.json()
-                if (response_message['isError'] === 'N') {
-                    return response_message;
-                }
-                else {
-                    this.loader.hideLoader();
-                    let message = response_message['result'];
-                    this.snackBar.open(message, '', {
-                        duration: 2000,
-                    });
-                    // this.dialogueservice.toastBox({
-                    //     title: 'Error',
-                    //     message: message,
-                    //     messageType: 'error',
-                    //     actionlabel: ['Close']
-                    //       }).take(1).subscribe((res)=>{
-                    //         console.log(res);
-                    //       })
-                }
+        if (token['member_sign'] === 'talent') {
+            return this.http.post('https://beayou.in/dashboard/upload/video_upload_talent.php', info, options)
+                .map((response) => {
+                    let response_message = response.json()
+                    if (response_message['isError'] === 'N') {
+                        return response_message;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = response_message['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
-            });
+                });
+
+        }
+        else if (token['member_sign'] === 'company') {
+            return this.http.post('https://beayou.in/dashboard/upload/video_upload_company.php', info, options)
+                .map((response) => {
+                    let response_message = response.json()
+                    if (response_message['isError'] === 'N') {
+                        return response_message;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = response_message['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
+
+                });
+
+        }
+        else {
+            return this.http.post('https://beayou.in/dashboard/upload/video_upload.php', info, options)
+                .map((response) => {
+                    let response_message = response.json()
+                    if (response_message['isError'] === 'N') {
+                        return response_message;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = response_message['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
+
+                });
+
+        }
     }
     updateName(info) {
         let token = JSON.parse(localStorage.getItem("currentUser"));
         let headers = new Headers({ 'Authorization': 'Bearer ' + token['token'] });
         let options = new RequestOptions({ headers: headers });
-        if(token['member_sign'] === 'talent'){
+        if (token['member_sign'] === 'talent') {
             return this.http.post('https://beayou.in/dashboard/edit/edit_name_talent.php', info, options)
-            .map((response) => {
-                let response_message = response.json()
-                if (response_message['isError'] === 'N') {
-                    return response_message;
-                }
-                else {
-                    this.loader.hideLoader();
-                    let message = response_message['result'];
-                    this.snackBar.open(message, '', {
-                        duration: 2000,
-                    });
-                    // this.dialogueservice.toastBox({
-                    //     title: 'Error',
-                    //     message: message,
-                    //     messageType: 'error',
-                    //     actionlabel: ['Close']
-                    //       }).take(1).subscribe((res)=>{
-                    //         console.log(res);
-                    //       })
-                }
+                .map((response) => {
+                    let response_message = response.json()
+                    if (response_message['isError'] === 'N') {
+                        return response_message;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = response_message['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
-            });
+                });
         }
-        else if(token['member_sign'] === 'company'){
+        else if (token['member_sign'] === 'company') {
+            return this.http.post('https://beayou.in/dashboard/edit/edit_name_company.php', info, options)
+                .map((response) => {
+                    let response_message = response.json()
+                    if (response_message['isError'] === 'N') {
+                        return response_message;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = response_message['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
+                });
         }
-        else{
+        else {
             return this.http.post('https://beayou.in/dashboard/edit/edit_name.php', info, options)
-            .map((response) => {
-                let response_message = response.json()
-                if (response_message['isError'] === 'N') {
-                    return response_message;
-                }
-                else {
-                    this.loader.hideLoader();
-                    let message = response_message['result'];
-                    this.snackBar.open(message, '', {
-                        duration: 2000,
-                    });
-                    // this.dialogueservice.toastBox({
-                    //     title: 'Error',
-                    //     message: message,
-                    //     messageType: 'error',
-                    //     actionlabel: ['Close']
-                    //       }).take(1).subscribe((res)=>{
-                    //         console.log(res);
-                    //       })
-                }
+                .map((response) => {
+                    let response_message = response.json()
+                    if (response_message['isError'] === 'N') {
+                        return response_message;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = response_message['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
-            });
+                });
         }
-    
+
     }
     updateImage(info) {
         let token = JSON.parse(localStorage.getItem("currentUser"));
         let headers = new Headers({ 'Authorization': 'Bearer ' + token['token'] });
         let options = new RequestOptions({ headers: headers });
-        if(token['member_sign'] === 'talent'){
+        if (token['member_sign'] === 'talent') {
             return this.http.post('https://beayou.in/dashboard/edit/edit_image_talent.php', info, options)
-            .map((response) => {
-                let response_message = response.json()
-                if (response_message['isError'] === 'N') {
-                    return response_message;
-                }
-                else {
-                    this.loader.hideLoader();
-                    let message = response_message['result'];
-                    this.snackBar.open(message, '', {
-                        duration: 2000,
-                    });
-                    // this.dialogueservice.toastBox({
-                    //     title: 'Error',
-                    //     message: message,
-                    //     messageType: 'error',
-                    //     actionlabel: ['Close']
-                    //       }).take(1).subscribe((res)=>{
-                    //         console.log(res);
-                    //       })
-                }
+                .map((response) => {
+                    let response_message = response.json()
+                    if (response_message['isError'] === 'N') {
+                        return response_message;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = response_message['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
-            });
+                });
         }
-        else if(token['member_sign'] === 'company'){
+        else if (token['member_sign'] === 'company') {
+            return this.http.post('https://beayou.in/dashboard/edit/edit_image_company.php', info, options)
+                .map((response) => {
+                    let response_message = response.json()
+                    if (response_message['isError'] === 'N') {
+                        return response_message;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = response_message['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
+                });
         }
-        else{
+        else {
             return this.http.post('https://beayou.in/dashboard/edit/edit_image.php', info, options)
-            .map((response) => {
-                let response_message = response.json()
-                if (response_message['isError'] === 'N') {
-                    return response_message;
-                }
-                else {
-                    this.loader.hideLoader();
-                    let message = response_message['result'];
-                    this.snackBar.open(message, '', {
-                        duration: 2000,
-                    });
-                    // this.dialogueservice.toastBox({
-                    //     title: 'Error',
-                    //     message: message,
-                    //     messageType: 'error',
-                    //     actionlabel: ['Close']
-                    //       }).take(1).subscribe((res)=>{
-                    //         console.log(res);
-                    //       })
-                }
+                .map((response) => {
+                    let response_message = response.json()
+                    if (response_message['isError'] === 'N') {
+                        return response_message;
+                    }
+                    else {
+                        this.loader.hideLoader();
+                        let message = response_message['result'];
+                        this.snackBar.open(message, '', {
+                            duration: 2000,
+                        });
+                        // this.dialogueservice.toastBox({
+                        //     title: 'Error',
+                        //     message: message,
+                        //     messageType: 'error',
+                        //     actionlabel: ['Close']
+                        //       }).take(1).subscribe((res)=>{
+                        //         console.log(res);
+                        //       })
+                    }
 
-            });
+                });
         }
-        
+
     }
     fetchImages(file) {
         let token = JSON.parse(localStorage.getItem("currentUser"));
@@ -311,13 +454,28 @@ export class dashbaordService {
         let token = JSON.parse(localStorage.getItem("currentUser"));
         let headers = new Headers({ 'Authorization': 'Bearer ' + token['token'] });
         let options = new RequestOptions({ headers: headers });
+        if (token['member_sign'] === 'talent') {
+            return this.http
+                .post(
+                //  "http://128.136.227.187:81/script_new.php",  //sit
+                "https://beayou.in/dashboard/upload/fetch-video.php", file, options)
+                .map((response: Response) => response.json())
+        }
+        else if (token['member_sign'] === 'company') {
+            return this.http
+                .post(
+                //  "http://128.136.227.187:81/script_new.php",  //sit
+                "https://beayou.in/dashboard/upload/fetch-video-company.php", file, options)
+                .map((response: Response) => response.json())
+        }
+        else {
+            return this.http
+                .post(
+                //  "http://128.136.227.187:81/script_new.php",  //sit
+                "https://beayou.in/dashboard/upload/fetch-video.php", file, options)
+                .map((response: Response) => response.json())
+        }
 
-
-        return this.http
-            .post(
-            //  "http://128.136.227.187:81/script_new.php",  //sit
-            "https://beayou.in/dashboard/upload/fetch-video.php", file, options)
-            .map((response: Response) => response.json())
     }
 
     listing_training(info) {

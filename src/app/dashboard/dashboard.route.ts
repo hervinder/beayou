@@ -11,6 +11,7 @@ import { PhotoUploadComponent } from './profile/photo-upload/photo-upload.compon
 import { FetchImagesComponent } from './profile/fetch-images/fetch-images.component';
 import { VideoComponent } from "./profile/video/video.component";
 import { FetchVideoComponent } from "./profile/fetch-video/fetch-video.component";
+import {ListJobComponent} from './list-job/list-job.component'
 export const Dashbaord_ROUTE: Routes = [
 
     { path: '', component: MainPageComponent },
@@ -22,7 +23,8 @@ export const Dashbaord_ROUTE: Routes = [
     { path: 'profile/fetch-photo', component: FetchImagesComponent },
     { path: 'profile/video', component: VideoComponent },
     { path: 'profile/fetch-video', component: FetchVideoComponent },
-    { path: 'listTraining', component: ListTrainingComponent, children: ListTraining_ROUTE }
+    { path: 'listTraining', component: ListTrainingComponent, children: ListTraining_ROUTE },
+    { path: 'listJob', component: ListJobComponent }
 
 
 ]

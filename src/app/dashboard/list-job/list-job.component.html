@@ -1,0 +1,124 @@
+<div class="list_header col-md-12">
+    <div>
+        <span class="" style="  color: #90d600; font-size: 21px;font-weight: initial;">Beayou.in</span>
+    </div>
+</div>
+<div class="col-md-8 col-md-offset-2">
+    <mat-horizontal-stepper [linear]="isLinear">
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup" class="form" style="text-align:center;">
+                <ng-template matStepLabel>Fill out your name</ng-template>
+                <div class="col-md-12 ">
+                    <div class="col-md-12 text-center">
+                        <h1 class="txt-center list_job">Listing details</h1>
+                        <p class="txt-center mb3">It's free to list your audition or job. We're not an agency and we don't charge a commission.</p>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 padd">
+                        <!-- <label for="InputFirstName">Heading</label> -->
+                        <mat-form-field style="width:100%">
+                            <input matInput placeholder="Heading" formControlName="heading" required>
+                        </mat-form-field>
+                        <div *ngIf="firstFormGroup.controls['heading'].errors &&  (firstFormGroup.controls['heading'].dirty || firstFormGroup.controls['heading'].touched)">
+
+                            <div style="text-align:left;" class="error_color" *ngIf="firstFormGroup.controls['heading'].errors.required">
+                                Heading is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 padd">
+
+                        <mat-form-field style="width:100%" class="form-filed">
+                            <mat-select placeholder="Choose a category..." formControlName="categoryCtrl" name="food">
+
+                                <mat-option *ngFor="let food of foods" [value]="food.value">
+                                    {{food.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 padd">
+
+                        <mat-form-field style="width:100%" class="form-filed">
+                            <mat-select placeholder="Choose a subcategory..." formControlName="subcategoryCtrl" name="food">
+
+                                <mat-option *ngFor="let food of foods" [value]="food.value">
+                                    {{food.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 padd" style="    text-align: left;
+                     font-size: 15px;">
+
+                        <h5 style="  color: #90d600;" class="example-h2">Applicants must provide</h5>
+
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin">Phone Number</mat-checkbox>
+
+                        </section>
+
+
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 padd">
+
+                        <mat-form-field style="width:100%" class="form-filed">
+                            <mat-select placeholder="Audition location" formControlName="subcategoryCtrl" name="food">
+
+                                <mat-option *ngFor="let food of foods" [value]="food.value">
+                                    {{food.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 padd">
+                        <div style="    text-align: left;
+                      color: #90d600;">
+                            <mat-label>Project description(Give a basic summary about the project or job.)</mat-label>
+                        </div>
+
+                        <mat-form-field style="width:100%" class="example-full-width">
+                            <textarea rows="4" cols="50" matInput placeholder="" maxlength="4000"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 padd">
+                        <div style="    text-align: left;
+                      color: #90d600;">
+                            <mat-label>
+
+                                Rehearsal / production dates e.g. Rehearsals will be on Sunday 29th Nov and Monday 30th Nov.
+
+                            </mat-label>
+                        </div>
+
+                        <mat-form-field style="width:100%" class="example-full-width">
+                            <textarea rows="4" cols="50" matInput placeholder="" maxlength="4000"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-md-offset-3 padd">
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Fill out your address</ng-template>
+                <mat-form-field>
+                    <input matInput placeholder="Address" formControlName="secondCtrl" required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            You are now done.
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>
