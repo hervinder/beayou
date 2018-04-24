@@ -37,7 +37,8 @@ import { EditProfileimageComponent } from './dashboard/profile/edit-profileimage
 import {ImageCropperComponent, CropperSettings} from 'ng2-img-cropper';
 import { PhotoUploadComponent } from './dashboard/profile/photo-upload/photo-upload.component';
 import { FetchImagesComponent } from './dashboard/profile/fetch-images/fetch-images.component';
-import {indiaStateService} from './shared/india-state.module'
+import {indiaStateService} from './shared/india-state.module';
+import {physicalAttributeService}from './shared/physical-attribute'
 import 'rxjs/add/operator/take';
 import { VideoComponent } from './dashboard/profile/video/video.component';
 import { FetchVideoComponent } from './dashboard/profile/fetch-video/fetch-video.component';
@@ -97,7 +98,8 @@ import { ListJobComponent } from './dashboard/list-job/list-job.component';
      dashbaordService, 
      AuthGuard,
      LoaderService,
-     indiaStateService
+     indiaStateService,
+     physicalAttributeService
     ],
   bootstrap: [AppComponent]
 })

@@ -14,3 +14,12 @@
 .padd {
     padding: 5px;
 }
+
+.example-margin {
+    margin: 0 10px;
+}
+
+/deep/ .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #a2a2a2;
+}

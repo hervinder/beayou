@@ -478,6 +478,34 @@ export class dashbaordService {
 
     }
 
+    list_job(info){
+        let token = JSON.parse(localStorage.getItem("currentUser"));
+        let headers = new Headers({ 'Authorization': 'Bearer ' + token['token'] });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post('https://beayou.in/dashboard/listing/job_listing.php', info, options)
+            .map((response) => {
+                let response_message = response.json()
+                if (response_message['isError'] === 'N') {
+                    return response_message;
+                }
+                else {
+                    this.loader.hideLoader();
+                    let message = response_message['result'];
+                    this.snackBar.open(message, '', {
+                        duration: 2000,
+                    });
+                    // this.dialogueservice.toastBox({
+                    //     title: 'Error',
+                    //     message: message,
+                    //     messageType: 'error',
+                    //     actionlabel: ['Close']
+                    //       }).take(1).subscribe((res)=>{
+                    //         console.log(res);
+                    //       })
+                }
+
+            });
+    }
     listing_training(info) {
         let token = JSON.parse(localStorage.getItem("currentUser"));
         let headers = new Headers({ 'Authorization': 'Bearer ' + token['token'] });

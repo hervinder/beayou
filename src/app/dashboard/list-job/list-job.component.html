@@ -16,7 +16,7 @@
                     <div class="col-md-8 col-md-offset-2 padd">
                         <!-- <label for="InputFirstName">Heading</label> -->
                         <mat-form-field style="width:100%">
-                            <input matInput placeholder="Heading" formControlName="heading" required>
+                            <input matInput placeholder="Heading" formControlName="heading">
                         </mat-form-field>
                         <div *ngIf="firstFormGroup.controls['heading'].errors &&  (firstFormGroup.controls['heading'].dirty || firstFormGroup.controls['heading'].touched)">
 
@@ -30,8 +30,8 @@
                         <mat-form-field style="width:100%" class="form-filed">
                             <mat-select placeholder="Choose a category..." formControlName="categoryCtrl" name="food">
 
-                                <mat-option *ngFor="let food of foods" [value]="food.value">
-                                    {{food.viewValue}}
+                                <mat-option (click)="categoryMatch(cat)" *ngFor="let cat of category" [value]="cat.code">
+                                    {{cat.code}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -41,8 +41,8 @@
                         <mat-form-field style="width:100%" class="form-filed">
                             <mat-select placeholder="Choose a subcategory..." formControlName="subcategoryCtrl" name="food">
 
-                                <mat-option *ngFor="let food of foods" [value]="food.value">
-                                    {{food.viewValue}}
+                                <mat-option *ngFor="let subcategory of subcategory" [value]="subcategory.code">
+                                    {{subcategory.code}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -53,7 +53,7 @@
                         <h5 style="  color: #90d600;" class="example-h2">Applicants must provide</h5>
 
                         <section class="example-section">
-                            <mat-checkbox class="example-margin">Phone Number</mat-checkbox>
+                            <mat-checkbox value="true" formControlName="phonenumber" class="example-margin">Phone Number</mat-checkbox>
 
                         </section>
 
@@ -62,10 +62,10 @@
                     <div class="col-md-8 col-md-offset-2 padd">
 
                         <mat-form-field style="width:100%" class="form-filed">
-                            <mat-select placeholder="Audition location" formControlName="subcategoryCtrl" name="food">
+                            <mat-select placeholder="Audition location" formControlName="state" name="food">
 
-                                <mat-option *ngFor="let food of foods" [value]="food.value">
-                                    {{food.viewValue}}
+                                <mat-option *ngFor="let state of states" [value]="state.code">
+                                    {{state.name}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -77,7 +77,7 @@
                         </div>
 
                         <mat-form-field style="width:100%" class="example-full-width">
-                            <textarea rows="4" cols="50" matInput placeholder="" maxlength="4000"></textarea>
+                            <textarea rows="4" cols="50" formControlName="project_desc" matInput placeholder="" maxlength="4000"></textarea>
                         </mat-form-field>
                     </div>
                     <div class="col-md-8 col-md-offset-2 padd">
@@ -91,34 +91,268 @@
                         </div>
 
                         <mat-form-field style="width:100%" class="example-full-width">
-                            <textarea rows="4" cols="50" matInput placeholder="" maxlength="4000"></textarea>
+                            <textarea rows="4" cols="50" formControlName="project_rehearsal" matInput placeholder="" maxlength="4000"></textarea>
                         </mat-form-field>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-md-offset-3 padd">
-                    <button mat-button matStepperNext>Next</button>
+                    <button (click)="firstFormsubmit()" mat-button matStepperNext>Next</button>
                 </div>
             </form>
         </mat-step>
         <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>Fill out your address</ng-template>
-                <mat-form-field>
-                    <input matInput placeholder="Address" formControlName="secondCtrl" required>
-                </mat-form-field>
-                <div>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
+                <ng-template matStepLabel>Role details</ng-template>
+                <div class="col-md-12 text-center">
+                    <h3 class="txt-center list_job">Role details</h3>
+
                 </div>
+                <div class="col-md-8 col-md-offset-2 padd">
+                    <!-- <label for="InputFirstName">Heading</label> -->
+                    <mat-form-field style="width:100%">
+                        <input matInput placeholder="Role Title" formControlName="role_title">
+                    </mat-form-field>
+                    <div *ngIf="secondFormGroup.controls['role_title'].errors &&  (secondFormGroup.controls['role_title'].dirty || secondFormGroup.controls['role_title'].touched)">
+
+                        <div style="text-align:left;" class="error_color" *ngIf="secondFormGroup.controls['role_title'].errors.required">
+                            Role Title is required
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-offset-2 padd" style="    text-align: left;
+                font-size: 15px;">
+
+                    <h5 style="  color: #90d600;" class="example-h2">Gender and Age</h5>
+
+                    <section class="example-section">
+                        <mat-checkbox value="true" formControlName="gender_male" class="example-margin">Male</mat-checkbox>
+
+                        <mat-checkbox value="true" formControlName="gender_female" class="example-margin">Female</mat-checkbox>
+                    </section>
+
+
+                </div>
+                <div class="col-md-8 col-md-offset-2 padd">
+                    <div style="    text-align: left;
+                 ">
+                        <mat-label>
+
+                            <span style=" color: #90d600;"> Additional info </span><br>
+                            <span> e.g. Include as much information as you can (e.g. character traits and requirements) to receive more relevant applications. Please be as detailed as possible.
+                            </span>
+                        </mat-label>
+                    </div>
+
+                    <mat-form-field style="width:100%" class="example-full-width">
+                        <textarea rows="4" cols="50" formControlName="role_description" matInput placeholder="" maxlength="4000"></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-8 col-md-offset-2 padd" style="    text-align: left;
+                font-size: 15px;">
+
+                    <h5 style="  color: #90d600;" class="example-h2">Role Requirements</h5>
+                    <label for="">Previous Experience</label>
+                    <section class="example-section">
+
+                        <mat-checkbox value="no_previous_exp" formControlName="no_previous_exp" class="example-margin">No previous extras experience</mat-checkbox>
+
+                    </section>
+                    <section class="example-section">
+
+
+                        <mat-checkbox value="previous_extra_exp" formControlName="previous_extra_exp" class="example-margin">Previous extras experience</mat-checkbox>
+                    </section>
+                    <section class="example-section">
+
+
+                        <mat-checkbox value="previous_feature_exp" formControlName="previous_feature_exp" class="example-margin"> Previous featured extras roles</mat-checkbox>
+                    </section>
+                    <section class="example-section">
+
+
+                        <mat-checkbox value="previous_speaking" formControlName="previous_speaking" class="example-margin">Previous speaking roles</mat-checkbox>
+                    </section>
+
+
+                </div>
+                <div class="col-md-8 col-md-offset-2 padd">
+                    <h5 style="  color: #90d600;" class="example-h2">Height</h5>
+                    <div>
+                        <mat-form-field style="width:100%" class="form-filed">
+                            <mat-select formControlName="heightMinCtrl" name="food">
+
+                                <mat-option *ngFor="let height of height" [value]="height.name">
+                                    {{height.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div>
+                        to
+                    </div>
+                    <div>
+                        <mat-form-field style="width:100%" class="form-filed">
+                            <mat-select formControlName="heightMaxCtrl" name="food">
+
+                                <mat-option *ngFor="let height of height" [value]="height.name">
+                                    {{height.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-offset-2 padd">
+                    <h5 style="  color: #90d600;" class="example-h2">Weight</h5>
+                    <div>
+                        <mat-form-field style="width:100%" class="form-filed">
+                            <mat-select formControlName="weightMinCtrl" name="food">
+
+                                <mat-option *ngFor="let weight of weight" [value]="weight.name">
+                                    {{weight.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div>
+                        to
+                    </div>
+                    <div>
+                        <mat-form-field style="width:100%" class="form-filed">
+                            <mat-select formControlName="weightMaxCtrl" name="food">
+
+                                <mat-option *ngFor="let weight of weight" [value]="weight.name">
+                                    {{weight.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-offset-2 padd">
+                    <h5 style="  color: #90d600;" class="example-h2">Waist</h5>
+                    <div>
+                        <mat-form-field style="width:100%" class="form-filed">
+                            <mat-select formControlName="waistMinCtrl" name="food">
+
+                                <mat-option *ngFor="let waist of waist" [value]="waist.name">
+                                    {{waist.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div>
+                        to
+                    </div>
+                    <div>
+                        <mat-form-field style="width:100%" class="form-filed">
+                            <mat-select formControlName="waistMaxCtrl" name="food">
+
+                                <mat-option *ngFor="let waist of waist" [value]="waist.name">
+                                    {{waist.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-offset-2 padd">
+                    <h5 style="  color: #90d600;" class="example-h2">Skin Color</h5>
+                    <div>
+                        <mat-form-field style="width:100%" class="form-filed">
+                            <mat-select formControlName="skinColorCtrl" name="food">
+
+                                <mat-option *ngFor="let skin_color of skin_color" [value]="skin_color.name">
+                                    {{skin_color.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-md-offset-3 padd">
+                    <button (click)="secondFormsubmit()" mat-button matStepperNext>Next</button>
+                </div>
+
             </form>
         </mat-step>
         <mat-step>
-            <ng-template matStepLabel>Done</ng-template>
-            You are now done.
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-            </div>
+            <form [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>Done</ng-template>
+                <div class="col-md-8 col-md-offset-2 padd">
+
+
+                    <mat-form-field style="width:100%;">
+                        <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a End date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-8 col-md-offset-2 padd">
+
+                    <mat-form-field style="width:100%">
+                        <h5 style="  color: #90d600;" class="example-h2">Associated website(eg: http://abc.com)</h5>
+
+                        <input matInput formControlName="associated_website">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-8 col-md-offset-2 padd">
+                    <h5 style="  color: #90d600;" class="example-h2">Job compensation</h5>
+                    <div>
+                        <label style="color: #737373;">
+                          <input type="radio" value="unpaid" formControlName="job_compensation" >Unpaid</label>
+
+                    </div>
+                    <div>
+                        <label style="color: #737373;">
+                          <input type="radio" value="expense" formControlName="job_compensation" >Expenses Only</label>
+
+                    </div>
+                    <div>
+                        <label style="color: #737373;">
+                          <input type="radio" value="paid" formControlName="job_compensation" >Paid</label>
+
+                    </div>
+                    <div>
+
+                        <mat-form-field style="width:100%">
+
+                            <input matInput placeholder="Job compensation(e.g. $20 per hour, $200 per day etc.)" formControlName="job_compensation_details">
+                        </mat-form-field>
+                    </div>
+
+                </div>
+                <div class="col-md-8 col-md-offset-2 padd">
+                    <h5 style="  color: #90d600;" class="example-h2">Fees</h5>
+                    <div>
+                        <label style="color: #737373;">
+                          <input type="radio" value="fees_not_charged" formControlName="fees" >Applicants are not charged fees</label>
+
+                    </div>
+                    <div>
+                        <label style="color: #737373;">
+                          <input type="radio" value="fees_charged" formControlName="fees" >Applicants are charged fees</label>
+
+                    </div>
+
+                    <div>
+
+                        <mat-form-field style="width:100%">
+
+                            <input matInput placeholder="Enter the fee details..." formControlName="fees_details">
+                        </mat-form-field>
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-md-offset-3 padd">
+                    <button (click)="thirdFormsubmit()" mat-button matStepperNext>Finish</button>
+                </div>
+            </form>
         </mat-step>
     </mat-horizontal-stepper>
 </div>

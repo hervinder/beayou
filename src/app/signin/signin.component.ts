@@ -64,7 +64,7 @@ export class SigninComponent implements OnInit {
   auth_user() {
     
     this.ngProgress.start();
-    sessionStorage.setItem("user_memeber_sign",this.myForm.value.member);
+    localStorage.setItem('user_member', this.myForm.value.member);
     this.signinService.login_auth(this.myForm.value)
       .subscribe((res) => {
         this.ngProgress.done();
