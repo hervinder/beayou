@@ -70,12 +70,14 @@
                         <div class="col-md-8">
                             <label for="Select_State">Select State</label>
                             <select [(ngModel)]="model.state" name="state" class="form-control" id="Select_State">
-                         <option>Haryana</option>
-                         <option>Delhi</option>
-                         <option>Punjab</option>
-                         <option>Himachal</option>
-                         <option>Jammu & Kashmir</option>
+                         
+                         <option disabled   [selected]='true' value="">Select</option>
+                         <option  *ngFor="let state of states" [value]="state.code">
+                              {{state.name}}
+                          </option> 
                      </select>
+
+
                         </div>
                     </div>
                     <div class="row form-group ">
