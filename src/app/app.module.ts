@@ -46,6 +46,8 @@ import { TrainingListingComponent } from './home/training-listing/training-listi
 import { TrainingDetailsComponent } from './home/training-details/training-details.component';
 import { ApplyTrainingComponent } from './home/apply-training/apply-training.component';
 import { ListJobComponent } from './dashboard/list-job/list-job.component';
+import { JobListingComponent } from './home/job-listing/job-listing.component';
+import { JobListingDetailsComponent } from './home/job-listing-details/job-listing-details.component';
 
 
 @NgModule({
@@ -78,7 +80,9 @@ import { ListJobComponent } from './dashboard/list-job/list-job.component';
     TrainingListingComponent,
     TrainingDetailsComponent,
     ApplyTrainingComponent,
-    ListJobComponent
+    ListJobComponent,
+    JobListingComponent,
+    JobListingDetailsComponent
   ],
   imports: [
     BrowserModule,

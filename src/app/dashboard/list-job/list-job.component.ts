@@ -88,7 +88,7 @@ export class ListJobComponent implements OnInit {
       heading: ['',Validators.required],
       phonenumber: ['true'],
       state: ['',Validators.required],
-      project_rehearsal: ['',Validators.required],
+      project_rehearsal: [''],
       project_desc: ['',Validators.required]
 
     });

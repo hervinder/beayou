@@ -1,0 +1,60 @@
+.heading_style h1 {
+    font-family: font-bold;
+    /* font-size: 2.5rem; */
+    font-weight: 800;
+    line-height: 1.1em;
+    margin-bottom: 0.5%;
+    letter-spacing: -0.04em;
+}
+
+.badge-style {
+    background: #fff551;
+    text-shadow: none;
+    color: #444;
+    top: -5px;
+    position: relative;
+}
+
+.inner {
+    border: 1px solid #ddd;
+    background-color: white;
+    padding: 15px 15px;
+    cursor: pointer;
+}
+
+.description_style {
+    white-space: pre-line;
+    max-width: 600px;
+    line-height: 160%;
+    font-size: 15px;
+    font-weight: 500;
+    border-top: 1px solid #ddd;
+}
+
+.job_role_desc {
+    white-space: pre-line;
+    max-width: 600px;
+    line-height: 160%;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.about_trainer {
+    border-top: 1px solid #ddd;
+}
+
+.job_role h3 {
+    font-weight: 600;
+}
+
+.listing-rehearsal-details {
+    border-top: 1px solid #ddd;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    overflow: auto;
+}
+
+.listing-rehearsal-details p {
+    font-weight: 700;
+    font-size: 16px;
+}

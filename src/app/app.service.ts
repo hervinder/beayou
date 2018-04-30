@@ -9,6 +9,14 @@ export class RootService {
     public token;
     constructor(private _http: Http) { }
 
+    jobListinfg_details(info){
+        return this._http.post("https://beayou.in/job-listing/job_listing_details.php", info)
+        .map((response) => response.json());
+    }
+    jobListing(info) {
+        return this._http.post("https://beayou.in/job-listing/job_listing.php", info)
+            .map((response) => response.json());
+    }
     trainingList(info) {
         return this._http.post("https://beayou.in/list-training/list-training.php", info)
             .map((response) => response.json());
@@ -26,7 +34,7 @@ export class RootService {
                     let username = info['user_email'];
                     if (res['error_code'] === '1') {
                         this.token = res["data"]["token"];
-                        localStorage.setItem('currentUser', JSON.stringify({ username: username, member_sign:'company',token: this.token }));
+                        localStorage.setItem('currentUser', JSON.stringify({ username: username, member_sign: 'company', token: this.token }));
                         return res['error_code'];
                     }
                     else {
@@ -37,19 +45,19 @@ export class RootService {
         }
         else if (info['member'] === 'talent') {
             return this._http.post("https://beayou.in/signin/signin_talent.php", info)
-            .map((response) => {
-                let res = response.json();
-                let username = info['user_email'];
-                if (res['error_code'] === '1') {
-                    this.token = res["data"]["token"];
-                    localStorage.setItem('currentUser', JSON.stringify({ username: username, member_sign:'talent',token: this.token }));
-                    return res['error_code'];
-                }
-                else {
-                    return res['error_code'];
-                }
+                .map((response) => {
+                    let res = response.json();
+                    let username = info['user_email'];
+                    if (res['error_code'] === '1') {
+                        this.token = res["data"]["token"];
+                        localStorage.setItem('currentUser', JSON.stringify({ username: username, member_sign: 'talent', token: this.token }));
+                        return res['error_code'];
+                    }
+                    else {
+                        return res['error_code'];
+                    }
 
-            });
+                });
         }
         else if (info['member'] === 'training') {
             return this._http.post("https://beayou.in/signin/signin_training.php", info)
@@ -58,7 +66,7 @@ export class RootService {
                     let username = info['user_email'];
                     if (res['error_code'] === '1') {
                         this.token = res["data"]["token"];
-                        localStorage.setItem('currentUser', JSON.stringify({ username: username, member_sign:'training',token: this.token }));
+                        localStorage.setItem('currentUser', JSON.stringify({ username: username, member_sign: 'training', token: this.token }));
                         return res['error_code'];
                     }
                     else {

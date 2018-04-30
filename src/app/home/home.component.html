@@ -19,7 +19,7 @@
                     <span class="audition_select ">
                       <select  [(ngModel)]="categoryCtrl">
                           <option value="all">All auditions & Jobs</option>
-                          <option *ngFor="let food of foods" [value]="food.value">{{food.viewValue}}</option>
+                          <option *ngFor="let cate of category" [value]="cate.code">{{cate.code}}</option>
                          
                       </select>
                   </span>
@@ -39,7 +39,7 @@
                       </select>
                   </span> -->
                     <span>
-                          <button type="submit" (click)="submit()" class="btn btn-primary register_btn">Search</button>
+                          <button type="submit" (click)="submitJob()" class="btn btn-primary register_btn">Search</button>
                       </span>
                 </div>
                 <div class="home-hero__text">Looking for talent?

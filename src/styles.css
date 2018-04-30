@@ -36,6 +36,11 @@
     src: url('./assets/fonts/OCRAStd.ttf');
 }
 
+@font-face {
+    font-family: 'font-bold';
+    src: url('./assets/fonts/Nunito-Bold.ttf');
+}
+
 html,
 body {
     font-family: Nunito-Regular !important;
